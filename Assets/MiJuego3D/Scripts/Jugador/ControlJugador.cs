@@ -17,8 +17,6 @@ public class ControlJugador : MonoBehaviour
     [Header("Estadísticas")]
     public int vida = 100;
     public int vidaMaxima = 100;
-    public int balas = 30;
-    public int balasMaximas = 99;
 
     [Header("Interacción")]
     public ControlArma arma; // <--- NUEVO: Arrastra aquí tu arma
@@ -40,6 +38,11 @@ public class ControlJugador : MonoBehaviour
         // Aseguramos que el jugador no rote como un balón de fútbol
         if (rb != null)
             rb.constraints = RigidbodyConstraints.FreezeRotation;
+        // Actualizamos el HUD al empezar para que la barra esté llena
+        if (ControlHUD.instancia != null)
+        {
+            ControlHUD.instancia.ActualizarVida(vida, vidaMaxima);
+        }
     }
 
     void Update()
@@ -114,13 +117,24 @@ public class ControlJugador : MonoBehaviour
         vida += cantidad;
         if (vida > vidaMaxima) vida = vidaMaxima;
         Debug.Log("Vida recuperada: " + vida);
+
+        if (ControlHUD.instancia != null)
+            ControlHUD.instancia.ActualizarVida(vida, vidaMaxima);
     }
+
+    // ... en ControlJugador.cs ...
 
     public void IncrementarBalas(int cantidad)
     {
-        balas += cantidad;
-        if (balas > balasMaximas) balas = balasMaximas;
-        Debug.Log("Munición recargada: " + balas);
+        // En vez de sumarnos a nosotros, se lo mandamos al arma
+        if (arma != null)
+        {
+            arma.RecargarArma(cantidad);
+        }
+        else
+        {
+            Debug.LogWarning("¡Has cogido munición pero no tienes un arma asignada en ControlJugador!");
+        }
     }
 
     public void QuitarVidasJugador(int cantidad)
@@ -133,19 +147,23 @@ public class ControlJugador : MonoBehaviour
             vida = 0;
             Morir();
         }
+
+        if (ControlHUD.instancia != null)
+            ControlHUD.instancia.ActualizarVida(vida, vidaMaxima);
     }
 
     void Morir()
     {
-        Debug.Log("El jugador ha muerto");
+        Debug.Log("GAME OVER - El jugador ha muerto");
 
-        if (scriptHUD != null)
+        // CORRECCIÓN: Usamos la instancia global en vez de la variable manual
+        if (ControlHUD.instancia != null)
         {
-            scriptHUD.MostrarGameOver(); // Llamamos al HUD
+            ControlHUD.instancia.MostrarGameOver();
         }
         else
         {
-            Debug.LogError("¡Falta asignar el Script HUD en el Jugador!");
+            Debug.LogError("No se encuentra el HUD. ¿Tienes el objeto ControlHUD en la escena?");
         }
     }
 

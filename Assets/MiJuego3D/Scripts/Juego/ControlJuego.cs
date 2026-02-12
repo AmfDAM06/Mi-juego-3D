@@ -23,22 +23,18 @@ public class ControlJuego : MonoBehaviour
     {
         juegoPausado = !juegoPausado;
 
-        // Llamamos a los métodos que YA creamos en el HUD anteriormente
+        // CORREGIDO: Usamos la lógica del HUD nuevo
         if (juegoPausado)
-        {
             ControlHUD.instancia.PausarJuego("PAUSA");
-        }
         else
-        {
             ControlHUD.instancia.ReanudarJuego();
-        }
     }
 
     public void PonerPuntuacion(int puntuacion)
     {
         puntuacionActual += puntuacion;
 
-        // CORREGIDO: Llamamos al método nuevo con mayúscula
+        // CORREGIDO: Llamada al método nuevo
         ControlHUD.instancia.ActualizarPuntuacion(puntuacionActual);
 
         if (puntuacionActual >= puntuacionParaGanar)
@@ -47,7 +43,7 @@ public class ControlJuego : MonoBehaviour
 
     public void ganarJuego()
     {
-        // CORREGIDO: Usamos el método de Victoria que creamos antes
+        // CORREGIDO: Llamada al método de victoria
         ControlHUD.instancia.MostrarVictoria();
     }
 }

@@ -209,7 +209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 918713664}
         m_TargetAssemblyTypeName: ControlHUD, Assembly-CSharp
-        m_MethodName: OnBotonEmpezar
+        m_MethodName: ReiniciarNivel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -472,7 +472,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 918713664}
         m_TargetAssemblyTypeName: ControlHUD, Assembly-CSharp
-        m_MethodName: OnBotonVolver
+        m_MethodName: ReanudarJuego
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6937af65b15a2d84b8bcd7283687e360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PoolObjetos
-  objetoPrefab: {fileID: 3518183255226001740, guid: 17ab63c021086184593f71ffed8f7086, type: 3}
+  objetoPrefab: {fileID: 534584569079772795, guid: 17ab63c021086184593f71ffed8f7086, type: 3}
   numObjetosOnStart: 20
 --- !u!114 &492318815
 MonoBehaviour:
@@ -1374,7 +1374,6 @@ MonoBehaviour:
   puntuacionEnemigo: 10
   velocidad: 2
   rangoAtaque: 5
-  scriptHUD: {fileID: 0}
 --- !u!1 &586107852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,10 +2041,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ControlHUD
   ventanaPausa: {fileID: 586107852}
   ventanaFinJuego: {fileID: 239237062}
-  tituloFinJuego: {fileID: 0}
-  tituloPausa: {fileID: 0}
-  textoMunicion: {fileID: 0}
-  textoPuntuacion: {fileID: 0}
+  tituloFinJuego: {fileID: 1427660890}
+  tituloPausa: {fileID: 955163066}
+  textoMunicion: {fileID: 1824713089}
+  textoPuntuacion: {fileID: 1583971339}
+  barraVidaRoja: {fileID: 1951832360}
 --- !u!1 &955163064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,10 +2398,8 @@ MonoBehaviour:
   sensibilidadRaton: 3
   maxVistaX: 80
   minVistaX: -80
-  vida: 10
+  vida: 100
   vidaMaxima: 100
-  balas: 30
-  balasMaximas: 99
   arma: {fileID: 1216162640}
   scriptHUD: {fileID: 0}
 --- !u!54 &1216162635
@@ -2880,7 +2878,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 918713664}
         m_TargetAssemblyTypeName: ControlHUD, Assembly-CSharp
-        m_MethodName: OnBotonEmpezar
+        m_MethodName: ReiniciarNivel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3240,7 +3238,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 918713664}
         m_TargetAssemblyTypeName: ControlHUD, Assembly-CSharp
-        m_MethodName: OnBotonMenu
+        m_MethodName: IrAlMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3490,6 +3488,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2033469210}
     m_Modifications:
+    - target: {fileID: 868644805521684423, guid: d8b39e1612b32b94d84dfe14087815b2, type: 3}
+      propertyPath: cantidad
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 868644805521684423, guid: d8b39e1612b32b94d84dfe14087815b2, type: 3}
+      propertyPath: tipoDeObjeto
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5001920284834433348, guid: d8b39e1612b32b94d84dfe14087815b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.49
@@ -3780,7 +3786,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 918713664}
         m_TargetAssemblyTypeName: ControlHUD, Assembly-CSharp
-        m_MethodName: OnBotonMenu
+        m_MethodName: IrAlMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3978,6 +3984,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2033469210}
     m_Modifications:
+    - target: {fileID: 868644805521684423, guid: d8b39e1612b32b94d84dfe14087815b2, type: 3}
+      propertyPath: cantidad
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 868644805521684423, guid: d8b39e1612b32b94d84dfe14087815b2, type: 3}
+      propertyPath: tipoDeObjeto
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5001920284834433348, guid: d8b39e1612b32b94d84dfe14087815b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.46
@@ -4316,6 +4330,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 330585546}
     m_Modifications:
+    - target: {fileID: 100289152063285335, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 2888725235558950529, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.44199944
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888725235558950529, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.27699995
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888725235558950529, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.13911815
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888725235558950529, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9902758
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888725235558950529, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 7004.006
+      objectReference: {fileID: 0}
     - target: {fileID: 4809012975948178754, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4359,6 +4397,38 @@ PrefabInstance:
     - target: {fileID: 6668522062931197140, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
       propertyPath: m_Name
       value: _Sufusil
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739176181827233968, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739176181827233968, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739176181827233968, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739176181827233968, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739176181827233968, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739176181827233968, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739176181827233968, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739176181827233968, guid: b9a1d23b635741241ad1a78e9b020171, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

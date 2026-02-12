@@ -17,8 +17,6 @@ public class ControlEnemigoMejorado : MonoBehaviour
     private ControlArma arma;
     private GameObject objetivo;
 
-    [Header("Referencias")]
-    public ControlHUD scriptHUD; // <--- NUEVO: Arrastra aquí el Canvas/HUD
 
     void Start()
     {
@@ -71,21 +69,19 @@ public class ControlEnemigoMejorado : MonoBehaviour
 
         if (vidasActual <= 0)
         {
-            // --- NUEVO: AVISAR DE VICTORIA ---
-            if (scriptHUD != null)
+            // --- CORRECCIÓN PROFESIONAL ---
+            // En lugar de usar la variable arrastrada, usamos el Singleton global
+            if (ControlHUD.instancia != null)
             {
-                scriptHUD.MostrarVictoria(); // Abre la ventana de pausa con "Has Ganado"
+                ControlHUD.instancia.MostrarVictoria();
             }
             else
             {
-                Debug.LogWarning("¡Ojo! Falta asignar el scriptHUD en el Enemigo");
+                Debug.LogError("No se encuentra la instancia de ControlHUD en la escena");
             }
-            // ---------------------------------
+            // ------------------------------
 
-            // Aquí seguramente tengas código para soltar loot o partículas
-            // ...
-
-            Destroy(gameObject); // Destruir al enemigo
+            Destroy(gameObject);
         }
     }
 }
